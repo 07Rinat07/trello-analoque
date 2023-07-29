@@ -7,7 +7,7 @@ Vue.use(VueRouter);
 
 import App from "./components/App.vue";
 import Home from "./components/Home.vue";
-import About from "./components/About.vue";
+import Desks from "./components/desks/Desks.vue";
 
 
 const router = new VueRouter({
@@ -19,10 +19,11 @@ const router = new VueRouter({
             component: Home
         },
         {
-            path: '/about',
-            name: 'about',
-            component: About
-        }
+            path: '/desks',
+            name: 'desks',
+            component: Desks
+        },
+
     ]
 })
 
