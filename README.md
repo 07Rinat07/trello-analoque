@@ -24,4 +24,24 @@
 ### For start
 * php artisan serve
 * npm run watch (each change starts the build automatically)
+____________________________________________________
+* 
 
+### Install Vue + Laravel 8-9 & VUE 2-3
+* to install laravel version not newer than 8.8, you need to switch php to version 7.4 or 8 but not newer.
+
+1. composer create-project laravel/laravel projectName --prefer-dist
+
+2. composer require laravel/ui
+
+3. php artisan ui vue
+
+4. npm install
+
+5. npm run dev
+
+6. npm i vue-loader
+
+7. npm install vue-router vue-axios
+
+8. npm run dev
