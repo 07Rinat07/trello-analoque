@@ -5105,7 +5105,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      desks: []
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+    axios.get('/api/V1/desks').then(function (response) {
+      _this.desks = response.data.data;
+    });
+  }
+});
 
 /***/ }),
 
@@ -5196,15 +5208,26 @@ __webpack_require__.r(__webpack_exports__);
 var render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _vm._m(0);
-};
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
   return _c("div", {
     staticClass: "container"
-  }, [_c("h1", [_vm._v("Доски")])]);
-}];
+  }, [_c("h1", [_vm._v("Доски")]), _vm._v(" "), _c("div", {
+    staticClass: "row"
+  }, _vm._l(_vm.desks, function (desk) {
+    return _c("div", {
+      staticClass: "col-lg-4"
+    }, [_c("div", {
+      staticClass: "card mt-3"
+    }, [_c("a", {
+      staticClass: "card-body",
+      attrs: {
+        href: "#"
+      }
+    }, [_c("h5", {
+      staticClass: "card-title"
+    }, [_vm._v(_vm._s(desk.name))])])])]);
+  }), 0)]);
+};
+var staticRenderFns = [];
 render._withStripped = true;
 
 
