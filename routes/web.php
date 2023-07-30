@@ -14,5 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/{any}',[SpaController::class, 'index'])->where('any','.*');
+Route::get('/{any}','SpaController@index')->where('any','.*');
 // все переадресовывает на вью роутер

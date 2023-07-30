@@ -10,7 +10,10 @@ class Desk extends Model
 
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $table = 'desks';
+    protected $guarded = false;
+
+//    protected $fillable = ['name'];
 
     public function lists()
     {

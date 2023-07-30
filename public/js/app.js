@@ -5108,13 +5108,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      desks: []
+      desks: [],
+      errored: false,
+      loading: true
     };
   },
   mounted: function mounted() {
     var _this = this;
-    axios.get('/api/V1/desks').then(function (response) {
+    axios.get('/api/v1/desks').then(function (response) {
       _this.desks = response.data.data;
+    })["catch"](function (error) {
+      console.log(error);
+      _this.errored = true;
+    })["finally"](function () {
+      _this.loading = false;
     });
   }
 });
@@ -5212,7 +5219,7 @@ var render = function render() {
     staticClass: "container"
   }, [_c("h1", [_vm._v("Доски")]), _vm._v(" "), _c("div", {
     staticClass: "row"
-  }, _vm._l(_vm.desks, function (desk) {
+  }, [_vm._l(_vm.desks, function (desk) {
     return _c("div", {
       staticClass: "col-lg-4"
     }, [_c("div", {
@@ -5225,7 +5232,23 @@ var render = function render() {
     }, [_c("h5", {
       staticClass: "card-title"
     }, [_vm._v(_vm._s(desk.name))])])])]);
-  }), 0)]);
+  }), _vm._v(" "), _vm.errored ? _c("div", {
+    staticClass: "alert alert-danger",
+    attrs: {
+      role: "alert"
+    }
+  }, [_vm._v("\n            Oшибка загрузки данных!\n        ")]) : _vm._e(), _vm._v(" "), _vm.loading ? _c("div", {
+    staticClass: "spinner-border",
+    staticStyle: {
+      width: "4rem",
+      height: "4rem"
+    },
+    attrs: {
+      role: "status"
+    }
+  }, [_c("span", {
+    staticClass: "sr-only"
+  }, [_vm._v("Loading..")])]) : _vm._e()], 2)]);
 };
 var staticRenderFns = [];
 render._withStripped = true;
